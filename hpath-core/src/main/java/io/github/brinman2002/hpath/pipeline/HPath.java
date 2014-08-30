@@ -71,15 +71,11 @@ public class HPath {
             return data.parallelDo(new XPathDoFn<T>(query), type);
         }
 
-        if (expression instanceof CoreOperation) {
-            // TODO
+        if (expression instanceof CoreOperation || expression instanceof CoreFunction) {
+            throw new IllegalArgumentException("Illegal query: XPath operations and functions not currently supported");
         }
 
-        if (expression instanceof CoreFunction) {
-            // TODO
-        }
-
-        throw new IllegalArgumentException("The XPath query '" + query + "' contains structured that are currently unsupported.");
+        throw new IllegalStateException("Illegal query: Was not a location, operation or function, instead was instance of " + expression.getClass());
     }
 
     /**

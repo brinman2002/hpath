@@ -21,8 +21,15 @@ import com.google.common.collect.ImmutableMap;
 
 public class HPathCommand {
 
-    final ImmutableMap<String, PType<?>> types = ImmutableMap.<String, PType<?>> builder().put("string", Avros.strings()).put("int", Avros.ints())
-            .put("double", Avros.doubles()).put("long", Avros.longs()).put("float", Avros.floats()).build();
+    // @formatter:off
+    final ImmutableMap<String, PType<?>> types = ImmutableMap.<String, PType<?>> builder()
+            .put("string", Avros.strings())
+            .put("int", Avros.ints())
+            .put("double", Avros.doubles())
+            .put("long", Avros.longs())
+            .put("float", Avros.floats()).build();
+
+    // @formatter:on
 
     public void run(final CommandLine commandLine) {
 
