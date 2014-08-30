@@ -48,7 +48,9 @@ public class HPath {
     }
 
     /**
-     * Perform an XPath query over the PCollection.
+     * Perform an XPath query over the PCollection. Queries are limited in that
+     * the outer-most part of the query must be a location path. XPath
+     * operations and functions may be used within the query.
      *
      * @param data
      *            The data that is being queried.
@@ -56,10 +58,7 @@ public class HPath {
      *            The XPath query. Not all queries are supported; see
      *            implementation for details.
      * @param type
-     *            The expected PType of the returned result. At some future
-     *            point, this method deprecated in favor of one that does not
-     *            require the caller to explicitly specify the return type and
-     *            instead derives it from the XPath and/or input record schema.
+     *            The expected PType of the returned result.
      * @return PCollection representing the result of the query.
      */
     public static <T> PCollection<T> query(final PCollection<GenericData.Record> data, final String query, final PType<T> type) {
